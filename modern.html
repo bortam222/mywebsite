@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Простой тест о часах</title>
+</head>
+<body bgcolor="lightyellow">
+  <h1>Современные технологии часов</h1>
+  <p>
+    Современные часы — это уже не просто прибор для измерения времени. 
+    Смарт‑часы стали полноценными мини‑компьютерами на запястье: они позволяют отслеживать здоровье, 
+    измерять пульс, уровень кислорода в крови, качество сна и физическую активность. 
+    Многие модели поддерживают GPS‑навигацию, бесконтактную оплату и интеграцию с приложениями для спорта и медицины.  
+  </p>
+  <p>
+    Классические бренды продолжают развивать механические технологии, создавая часы, которые сочетают 
+    традиционное мастерство и современные материалы. В то же время будущее часовой индустрии связано 
+    с искусственным интеллектом, биометрией и дополненной реальностью. Часы постепенно превращаются 
+    в универсальный центр управления жизнью — от здоровья до коммуникаций и развлечений.
+  </p>
+
+  <h1>Тест: часы и бренды</h1>
+
+  <form id="quizForm">
+    <h2>Вопрос 1</h2>
+    <p>Какая компания выпускает Apple Watch?</p>
+    <input type="radio" name="q1" value="apple"> Apple<br>
+    <input type="radio" name="q1" value="samsung"> Samsung<br>
+    <input type="radio" name="q1" value="casio"> Casio<br>
+    <div id="feedback1"></div>
+
+    <h2>Вопрос 2</h2>
+    <p>Какие часы считаются люксовыми швейцарскими?</p>
+    <input type="radio" name="q2" value="rolex"> Rolex<br>
+    <input type="radio" name="q2" value="omega"> Omega<br>
+    <input type="radio" name="q2" value="swatch"> Swatch<br>
+    <div id="feedback2"></div>
+
+    <h2>Вопрос 3</h2>
+    <p>Какая функция чаще всего встречается в смарт‑часах?</p>
+    <input type="radio" name="q3" value="health"> Отслеживание здоровья<br>
+    <input type="radio" name="q3" value="notifications"> Уведомления<br>
+    <input type="radio" name="q3" value="gps"> GPS‑навигация<br>
+    <div id="feedback3"></div><br>
+
+    <button type="submit">Отправить ответы</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    document.getElementById("quizForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      let answers = {
+        q1: "apple",
+        q2: "rolex",
+        q3: "health"
+      };
+
+      let score = 0;
+
+      for (let q in answers) {
+        let selected = document.querySelector('input[name="'+q+'"]:checked');
+        let feedback = document.getElementById("feedback" + q.substring(1));
+        if (selected) {
+          if (selected.value === answers[q]) {
+            feedback.textContent = "✅ Правильно!";
+            score++;
+          } else {
+            feedback.textContent = "❌ Неправильно. Правильный ответ: " + answers[q];
+          }
+        } else {
+          feedback.textContent = "⚠️ Вы не выбрали ответ.";
+        }
+      }
+
+      document.getElementById("result").textContent =
+        "Итог: " + score + " из 3 правильных.";
+    });
+  </script>
+</body>
+</html>
+<img src="https://onewatch.by/wp-content/uploads/2022/09/praktika-apple-watch-ultra.jpg"  width="400" height="300">
